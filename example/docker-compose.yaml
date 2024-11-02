@@ -1,0 +1,11 @@
+services:
+  ftp:
+    container_name: ftp
+    build: ..
+    restart: unless-stopped
+    volumes:
+      - ./anonymous-root/:/var/run/vsftpd/anonymous/:ro,z
+      - ./vsftpd.conf:/etc/vsftpd.conf:ro,z
+    ports:
+      - "20-21:20-21/tcp"
+      - "21100-21110:21100-21110/tcp"
